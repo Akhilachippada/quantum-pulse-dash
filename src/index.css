@@ -2,41 +2,67 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Quantum Jobs Tracker Design System - Quantum Computing Theme */
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Quantum Dark Theme */
+    --background: 230 25% 8%;
+    --foreground: 210 40% 98%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 230 20% 12%;
+    --card-foreground: 210 40% 98%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 230 20% 12%;
+    --popover-foreground: 210 40% 98%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Quantum Blue Primary */
+    --primary: 220 85% 55%;
+    --primary-foreground: 230 25% 8%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Quantum Purple Secondary */
+    --secondary: 270 60% 25%;
+    --secondary-foreground: 210 40% 98%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 230 20% 18%;
+    --muted-foreground: 215 25% 65%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Quantum Cyan Accent */
+    --accent: 180 100% 70%;
+    --accent-foreground: 230 25% 8%;
 
-    --destructive: 0 84.2% 60.2%;
+    --destructive: 0 75% 60%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 230 20% 20%;
+    --input: 230 20% 18%;
+    --ring: 220 85% 55%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
+
+    /* Quantum Status Colors */
+    --quantum-running: 180 100% 70%;
+    --quantum-queued: 45 100% 70%;
+    --quantum-completed: 120 70% 60%;
+    --quantum-failed: 0 75% 60%;
+    --quantum-cancelled: 215 25% 65%;
+
+    /* Quantum Gradients */
+    --gradient-quantum: linear-gradient(135deg, hsl(220 85% 55%) 0%, hsl(270 60% 45%) 100%);
+    --gradient-quantum-glow: linear-gradient(135deg, hsl(220 85% 55% / 0.2) 0%, hsl(270 60% 45% / 0.2) 100%);
+    --gradient-circuit: linear-gradient(90deg, hsl(180 100% 70% / 0.1) 0%, hsl(220 85% 55% / 0.1) 100%);
+
+    /* Quantum Shadows */
+    --shadow-quantum: 0 0 30px hsl(220 85% 55% / 0.3);
+    --shadow-glow: 0 0 20px hsl(180 100% 70% / 0.4);
+
+    /* Animations */
+    --transition-quantum: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --pulse-quantum: pulse-quantum 2s infinite;
+
+    --radius: 0.75rem;
 
     --sidebar-background: 0 0% 98%;
 
@@ -100,6 +126,75 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-inter;
   }
+}
+
+@layer components {
+  /* Quantum Status Indicators */
+  .status-running {
+    @apply text-[hsl(var(--quantum-running))] bg-[hsl(var(--quantum-running)/0.1)] border-[hsl(var(--quantum-running)/0.3)];
+  }
+  
+  .status-queued {
+    @apply text-[hsl(var(--quantum-queued))] bg-[hsl(var(--quantum-queued)/0.1)] border-[hsl(var(--quantum-queued)/0.3)];
+  }
+  
+  .status-completed {
+    @apply text-[hsl(var(--quantum-completed))] bg-[hsl(var(--quantum-completed)/0.1)] border-[hsl(var(--quantum-completed)/0.3)];
+  }
+  
+  .status-failed {
+    @apply text-[hsl(var(--quantum-failed))] bg-[hsl(var(--quantum-failed)/0.1)] border-[hsl(var(--quantum-failed)/0.3)];
+  }
+  
+  .status-cancelled {
+    @apply text-[hsl(var(--quantum-cancelled))] bg-[hsl(var(--quantum-cancelled)/0.1)] border-[hsl(var(--quantum-cancelled)/0.3)];
+  }
+
+  /* Quantum Glow Effects */
+  .quantum-glow {
+    box-shadow: var(--shadow-quantum);
+  }
+  
+  .quantum-card {
+    background: var(--gradient-quantum-glow);
+    backdrop-filter: blur(10px);
+    border: 1px solid hsl(var(--border));
+  }
+
+  /* Font Classes */
+  .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+  
+  .font-inter {
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+@keyframes pulse-quantum {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+@keyframes glow-pulse {
+  0%, 100% {
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.3);
+  }
+  50% {
+    box-shadow: 0 0 30px hsl(var(--primary) / 0.6);
+  }
+}
+
+.animate-pulse-quantum {
+  animation: pulse-quantum 2s infinite;
+}
+
+.animate-glow-pulse {
+  animation: glow-pulse 3s infinite;
 }

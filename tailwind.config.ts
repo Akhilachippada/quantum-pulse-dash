@@ -18,6 +18,10 @@ export default {
 			}
 		},
 		extend: {
+			fontFamily: {
+				'mono': ['JetBrains Mono', 'monospace'],
+				'inter': ['Inter', 'sans-serif'],
+			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
@@ -61,7 +65,19 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				quantum: {
+					running: 'hsl(var(--quantum-running))',
+					queued: 'hsl(var(--quantum-queued))',
+					completed: 'hsl(var(--quantum-completed))',
+					failed: 'hsl(var(--quantum-failed))',
+					cancelled: 'hsl(var(--quantum-cancelled))'
 				}
+			},
+			backgroundImage: {
+				'gradient-quantum': 'var(--gradient-quantum)',
+				'gradient-quantum-glow': 'var(--gradient-quantum-glow)',
+				'gradient-circuit': 'var(--gradient-circuit)'
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
