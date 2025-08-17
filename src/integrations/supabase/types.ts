@@ -14,7 +14,99 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      quantum_devices: {
+        Row: {
+          created_at: string
+          id: string
+          name: string
+          qubits: number
+          queue: number
+          status: string
+          updated_at: string
+          usage: number
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          name: string
+          qubits: number
+          queue?: number
+          status: string
+          updated_at?: string
+          usage?: number
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          name?: string
+          qubits?: number
+          queue?: number
+          status?: string
+          updated_at?: string
+          usage?: number
+        }
+        Relationships: []
+      }
+      quantum_jobs: {
+        Row: {
+          circuit_type: string
+          completed_at: string | null
+          created_at: string
+          depth: number
+          device: string
+          duration: number | null
+          estimated_time: number | null
+          id: string
+          job_id: string
+          name: string
+          priority: string
+          qubits: number
+          shots: number
+          status: string
+          submitted_at: string
+          updated_at: string
+          user_name: string
+        }
+        Insert: {
+          circuit_type: string
+          completed_at?: string | null
+          created_at?: string
+          depth: number
+          device: string
+          duration?: number | null
+          estimated_time?: number | null
+          id?: string
+          job_id: string
+          name: string
+          priority?: string
+          qubits: number
+          shots: number
+          status: string
+          submitted_at: string
+          updated_at?: string
+          user_name: string
+        }
+        Update: {
+          circuit_type?: string
+          completed_at?: string | null
+          created_at?: string
+          depth?: number
+          device?: string
+          duration?: number | null
+          estimated_time?: number | null
+          id?: string
+          job_id?: string
+          name?: string
+          priority?: string
+          qubits?: number
+          shots?: number
+          status?: string
+          submitted_at?: string
+          updated_at?: string
+          user_name?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
